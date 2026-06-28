@@ -3,31 +3,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact the Campus Café team for catering, support, operating hours, and location maps.">
     <title>Contact Us | Campus Café</title>
     <style>
+        /* --- DESIGN SYSTEM & VARIABLES --- */
         :root {
-            --bg-primary: #fdfbf7;--bg-secondary: #f4efe6;--accent-dark: #2c4a3e;--accent-light: #4a7c66;--text-dark: #1e2d27;--text-muted: #5c6b64;--white: #ffffff;--gold: #dfa837;--shadow: 0 8px 24px rgba(0, 0, 0, 0.05);--transition: all 0.3s ease;
+            --bg-primary: #fdfbf7;
+            --bg-secondary: #f4efe6;
+            --accent-dark: #2c4a3e;
+            --accent-light: #4a7c66;
+            --text-dark: #1e2d27;
+            --text-muted: #5c6b64;
+            --white: #ffffff;
+            --gold: #dfa837;
+            --shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
-        body { background-color: var(--bg-primary); color: var(--text-dark); line-height: 1.6; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
         .text-center { text-align: center; }
+        .section-padding { padding: 5rem 0; }
 
-        /* --- STICKY NAV AND ALERTS --- */
-        .top-bar { background-color: var(--accent-dark); color: var(--white); font-size: 0.85rem; padding: 0.6rem 0; font-weight: 500; }
-        .top-bar-flex { display: flex; justify-content: space-between; align-items: center; }
-        
-        header { background-color: var(--white); box-shadow: var(--shadow); position: sticky; top: 0; z-index: 999; padding: 1.2rem 0; }
-        .header-flex { display: flex; justify-content: space-between; align-items: center; }
-        header h1 { color: var(--accent-dark); font-size: 1.75rem; font-weight: 800; }
-        nav { display: flex; gap: 1.5rem; }
-        nav a { text-decoration: none; color: var(--text-muted); font-weight: 500; }
-        nav a.active { color: var(--accent-dark); font-weight: 700; }
+        /* --- TOP BANNER --- */
+        .top-bar {
+            background-color: var(--accent-dark);
+            color: var(--white);
+            font-size: 0.85rem;
+            padding: 0.6rem 0;
+            font-weight: 500;
+        }
+        .top-bar-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
 
-        /* --- CONTACT HERO --- */
-        .inner-hero { background-color: var(--bg-secondary); padding: 5rem 0; border-bottom: 1px solid rgba(74, 124, 102, 0.1); }
-        .inner-hero h2 { font-size: 3rem; color: var(--accent-dark); margin-bottom: 1rem; }
-        .inner-hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin: 0 auto; }
+        /* --- NAVIGATION HEADER --- */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            padding: 1.2rem 0;
+        }
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            color: var(--accent-dark);
+            font-size: 1.75rem;
+            font-weight: 800;
+        }
+        nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        nav a:hover, nav a.active {
+            color: var(--accent-dark);
+        }
+
+        /* --- INNER PAGE HERO --- */
+        .inner-hero {
+            background-color: var(--bg-secondary);
+            padding: 5rem 0;
+            border-bottom: 1px solid rgba(74, 124, 102, 0.1);
+        }
+        .inner-hero h2 {
+            font-size: 3rem;
+            color: var(--accent-dark);
+            margin-bottom: 1rem;
+        }
+        .inner-hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- SPLIT DESKTOP CONFIGURATION --- */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        /* Form Card Element Styling */
+        .contact-card-form {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 4px;
+            box-shadow: var(--shadow);
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--accent-dark);
+            margin-bottom: 0.4rem;
+            font-size: 0.95rem;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid rgba(74, 124, 102, 0.2);
+            border-radius: 4px;
+            background-color: var(--bg-primary);
+            color: var(--text-dark);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-dark);
+            background-color: var(--white);
+            box-shadow: 0 0 0 3px rgba(44, 74, 62, 0.1);
+        }
+        .submit-btn {
+            background-color: var(--accent-dark);
+            color: var(--white);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+        }
+        .submit-btn:hover {
+            background-color: var(--accent-light);
+        }
+
+        /* Info Block Sidebar Styling */
+        .info-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+        .info-block h3 {
+            color: var(--accent-dark);
+            font-size: 1.35rem;
+            margin-bottom: 0.75rem;
+            border-bottom: 2px solid var(--bg-secondary);
+            padding-bottom: 0.4rem;
+        }
+        .info-block p {
+            color: var(--text-muted);
+            margin-bottom: 0.4rem;
+        }
+
+        /* --- DETAILED MULTI-COLUMN FOOTER --- */
+        footer {
+            background-color: var(--text-dark);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 4rem 0 2rem 0;
+            margin-top: 5rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 3rem;
+        }
+        .footer-brand h3, .footer-links h4, .footer-contact h4, .footer-socials h4 {
+            color: var(--white);
+            margin-bottom: 1.2rem;
+        }
+        .footer-links ul, .footer-socials ul { list-style: none; }
+        .footer-links ul li, .footer-socials ul li { margin-bottom: 0.6rem; }
+        .footer-links ul li a, .footer-socials ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .footer-links ul li a:hover, .footer-socials ul li a:hover { color: var(--gold); }
+        .footer-bottom { font-size: 0.85rem; }
+
+        @media (max-width: 992px) {
+            .contact-wrapper { grid-template-columns: 1fr; gap: 3rem; }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .contact-card-form { padding: 1.5rem; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -45,6 +238,10 @@
         <nav>
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
+            <a href="menu.html">Menu</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="blog.html">Blog</a>
+            <a href="faq.html">FAQ</a>
             <a href="contact.html" class="active">Contact</a>
         </nav>
     </div>
@@ -58,11 +255,93 @@
         </div>
     </section>
 
-    <div class="container" style="padding: 4rem 0;">
+    <section class="section-padding">
+        <div class="container contact-wrapper">
+            
+            <div class="contact-card-form">
+                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Message logged successfully under static client demo settings!');">
+                    <div class="form-group">
+                        <label for="user-name">Your Full Name</label>
+                        <input type="text" id="user-name" placeholder="Alex Kamau" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="user-email">University Email Address</label>
+                        <input type="email" id="user-email" placeholder="student@university.edu" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="msg-subject">Inquiry Subject</label>
+                        <input type="text" id="msg-subject" placeholder="Catering / Table Reservation / Feedback" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="user-msg">Your Message Details</label>
+                        <textarea id="user-msg" rows="5" placeholder="Type your core query blocks out completely here..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+
+            <div class="info-sidebar">
+                
+                <div class="info-block">
+                    <h3>📍 Campus Location</h3>
+                    <p><strong>Student Union Building</strong></p>
+                    <p>1st Floor, Academic Wing Hub North</p>
+                    <p>Nairobi, Kenya</p>
+                </div>
+
+                <div class="info-block">
+                    <h3>⏰ Operating Hours</h3>
+                    <p>Monday – Friday: 7:00 AM – 8:00 PM</p>
+                    <p>Saturday: 8:00 AM – 4:00 PM</p>
+                    <p style="color: var(--gold); font-weight: 600;">*Exam Weeks: Open down until 12:00 Midnight</p>
+                </div>
+
+                <div class="info-block">
+                    <h3>Direct Channels</h3>
+                    <p>📞 Phone: (555) 123-4567</p>
+                    <p>✉️ General: cafe@campus.edu</p>
+                    <p>💼 Corporate: catering-events@campus.edu</p>
+                </div>
+
+            </div>
+
         </div>
+    </section>
 </main>
 
-<footer><p>© 2026 Campus Café. All Rights Reserved.</p></footer>
+<footer>
+    <div class="container footer-grid">
+        <div class="footer-brand">
+            <h3>Campus Café</h3>
+            <p>Providing pristine dining spaces and operational workspace solutions right across university environments.</p>
+        </div>
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="blog.html">Blog Portal</a></li>
+                <li><a href="contact.html">Support Hub</a></li>
+            </ul>
+        </div>
+        <div class="footer-contact">
+            <h4>Contact Details</h4>
+            <p style="margin-bottom: 0.5rem;">📞 (555) 123-4567</p>
+            <p>✉️ cafe@campus.edu</p>
+        </div>
+        <div class="footer-socials">
+            <h4>Digital Channels</h4>
+            <ul>
+                <li><a href="#">Instagram Feed</a></li>
+                <li><a href="#">TikTok Updates</a></li>
+                <li><a href="#">Campus Forums</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom text-center">
+        <p>&copy; 2026 Campus Café. All Rights Reserved. Engineered with advanced typographic design systems.</p>
+    </div>
+</footer>
 
 </body>
 </html>
