@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Contact the Campus Café team for catering, support, operating hours, and location maps.">
     <title>Contact Us | Campus Café</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* --- DESIGN SYSTEM & VARIABLES --- */
+        /* --- GLOBAL DESIGN SYSTEM VARIABLES --- */
         :root {
             --bg-primary: #fdfbf7;
             --bg-secondary: #f4efe6;
@@ -20,42 +21,20 @@
             --transition: all 0.3s ease;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-        }
-
         body {
             background-color: var(--bg-primary);
             color: var(--text-dark);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             line-height: 1.6;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .text-center { text-align: center; }
-        .section-padding { padding: 5rem 0; }
-
-        /* --- TOP BANNER --- */
+        /* --- TOP NOTICE ALERTS --- */
         .top-bar {
             background-color: var(--accent-dark);
             color: var(--white);
             font-size: 0.85rem;
             padding: 0.6rem 0;
             font-weight: 500;
-        }
-        .top-bar-flex {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 0.5rem;
         }
 
         /* --- NAVIGATION HEADER --- */
@@ -65,30 +44,19 @@
             position: sticky;
             top: 0;
             z-index: 999;
-            padding: 1.2rem 0;
         }
-        .header-flex {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        header h1 {
-            color: var(--accent-dark);
-            font-size: 1.75rem;
+        .navbar-brand {
+            color: var(--accent-dark) !important;
             font-weight: 800;
+            font-size: 1.75rem;
         }
-        nav {
-            display: flex;
-            gap: 1.5rem;
-        }
-        nav a {
-            text-decoration: none;
-            color: var(--text-muted);
+        .nav-link {
+            color: var(--text-muted) !important;
             font-weight: 500;
             transition: var(--transition);
         }
-        nav a:hover, nav a.active {
-            color: var(--accent-dark);
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent-dark) !important;
         }
 
         /* --- INNER PAGE HERO --- */
@@ -100,42 +68,23 @@
         .inner-hero h2 {
             font-size: 3rem;
             color: var(--accent-dark);
+            font-weight: 800;
             margin-bottom: 1rem;
         }
-        .inner-hero p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto;
-        }
 
-        /* --- SPLIT DESKTOP CONFIGURATION --- */
-        .contact-wrapper {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 4rem;
-            align-items: start;
-        }
-
-        /* Form Card Element Styling */
+        /* --- CONTACT CONTENT MODULES --- */
         .contact-card-form {
             background: var(--white);
             padding: 3rem;
             border-radius: 4px;
             box-shadow: var(--shadow);
         }
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        .form-group label {
-            display: block;
+        .form-label {
             font-weight: 600;
             color: var(--accent-dark);
-            margin-bottom: 0.4rem;
             font-size: 0.95rem;
         }
-        .form-group input, .form-group textarea {
-            width: 100%;
+        .form-control {
             padding: 0.8rem 1rem;
             border: 1px solid rgba(74, 124, 102, 0.2);
             border-radius: 4px;
@@ -144,7 +93,7 @@
             font-size: 1rem;
             transition: var(--transition);
         }
-        .form-group input:focus, .form-group textarea:focus {
+        .form-control:focus {
             outline: none;
             border-color: var(--accent-dark);
             background-color: var(--white);
@@ -166,7 +115,7 @@
             background-color: var(--accent-light);
         }
 
-        /* Info Block Sidebar Styling */
+        /* Sidebar info text elements */
         .info-sidebar {
             display: flex;
             flex-direction: column;
@@ -178,71 +127,58 @@
             margin-bottom: 0.75rem;
             border-bottom: 2px solid var(--bg-secondary);
             padding-bottom: 0.4rem;
-        }
-        .info-block p {
-            color: var(--text-muted);
-            margin-bottom: 0.4rem;
+            font-weight: 700;
         }
 
-        /* --- DETAILED MULTI-COLUMN FOOTER --- */
+        /* --- MASTER FOOTER SYSTEM --- */
         footer {
             background-color: var(--text-dark);
             color: rgba(255, 255, 255, 0.7);
             padding: 4rem 0 2rem 0;
             margin-top: 5rem;
         }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 3rem;
-        }
-        .footer-brand h3, .footer-links h4, .footer-contact h4, .footer-socials h4 {
-            color: var(--white);
-            margin-bottom: 1.2rem;
-        }
-        .footer-links ul, .footer-socials ul { list-style: none; }
-        .footer-links ul li, .footer-socials ul li { margin-bottom: 0.6rem; }
-        .footer-links ul li a, .footer-socials ul li a {
+        footer h3, footer h4 { color: var(--white); font-weight: 700; }
+        footer a {
             color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             transition: var(--transition);
         }
-        .footer-links ul li a:hover, .footer-socials ul li a:hover { color: var(--gold); }
-        .footer-bottom { font-size: 0.85rem; }
+        footer a:hover { color: var(--gold); }
 
-        @media (max-width: 992px) {
-            .contact-wrapper { grid-template-columns: 1fr; gap: 3rem; }
-            .footer-grid { grid-template-columns: repeat(2, 1fr); }
-        }
+        /* Responsive spacing overrides */
         @media (max-width: 600px) {
             .contact-card-form { padding: 1.5rem; }
-            .footer-grid { grid-template-columns: 1fr; }
+            .inner-hero h2 { font-size: 2.25rem; }
         }
     </style>
 </head>
 <body>
 
 <div class="top-bar">
-    <div class="container top-bar-flex">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
         <span>🎉 Show your student ID for 10% off all espresso drinks!</span>
         <span>📍 Student Union Building, 1st Floor</span>
     </div>
 </div>
 
-<header>
-    <div class="container header-flex">
-        <h1>Campus Café</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="menu.html">Menu</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="blog.html">Blog</a>
-            <a href="faq.html">FAQ</a>
-            <a href="contact.html" class="active">Contact</a>
+<header class="py-2">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light p-0">
+            <a class="navbar-brand" href="index.html">Campus Café</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+                <div class="navbar-nav gap-3 mt-2 mt-lg-0">
+                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link" href="about.html">About</a>
+                    <a class="nav-link" href="menu.html">Menu</a>
+                    <a class="nav-link" href="gallery.html">Gallery</a>
+                    <a class="nav-link" href="blog.html">Blog</a>
+                    <a class="nav-link" href="faq.html">FAQ</a>
+                    <a class="nav-link active" href="contact.html">Contact</a>
+                </div>
+            </div>
         </nav>
     </div>
 </header>
@@ -251,97 +187,107 @@
     <section class="inner-hero text-center">
         <div class="container">
             <h2>Get In Touch</h2>
-            <p>Have questions, catering requests, or feedback? Drop us a line below or visit our campus branch directly.</p>
+            <p class="lead text-muted mx-auto" style="max-width: 600px;">Have questions, catering requests, or workspace feedback? Drop us a line below or visit our campus branch directly.</p>
         </div>
     </section>
 
-    <section class="section-padding">
-        <div class="container contact-wrapper">
-            
-            <div class="contact-card-form">
-                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Message logged successfully under static client demo settings!');">
-                    <div class="form-group">
-                        <label for="user-name">Your Full Name</label>
-                        <input type="text" id="user-name" placeholder="Alex Kamau" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="user-email">University Email Address</label>
-                        <input type="email" id="user-email" placeholder="student@university.edu" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="msg-subject">Inquiry Subject</label>
-                        <input type="text" id="msg-subject" placeholder="Catering / Table Reservation / Feedback" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="user-msg">Your Message Details</label>
-                        <textarea id="user-msg" rows="5" placeholder="Type your core query blocks out completely here..." required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Send Message</button>
-                </form>
-            </div>
-
-            <div class="info-sidebar">
+    <section class="py-5 my-2">
+        <div class="container">
+            <div class="row g-5">
                 
-                <div class="info-block">
-                    <h3>📍 Campus Location</h3>
-                    <p><strong>Student Union Building</strong></p>
-                    <p>1st Floor, Academic Wing Hub North</p>
-                    <p>Nairobi, Kenya</p>
+                <div class="col-lg-7">
+                    <div class="contact-card-form">
+                        <form id="contactForm" action="#" method="POST" novalidate>
+                            <div class="mb-4">
+                                <label for="name" class="form-label">Your Full Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Alex Kamau" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="email" class="form-label">University Email Address</label>
+                                <input type="email" class="form-control" id="email" placeholder="student@university.edu" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="subject" class="form-label">Inquiry Subject</label>
+                                <input type="text" class="form-control" id="subject" placeholder="Catering / Space Reservation / General Feedback">
+                            </div>
+                            <div class="mb-4">
+                                <label for="message" class="form-label">Your Message Details</label>
+                                <textarea class="form-control" id="message" rows="5" placeholder="Type your core message layout notes here..."></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Send Message</button>
+                        </form>
+                    </div>
                 </div>
 
-                <div class="info-block">
-                    <h3>⏰ Operating Hours</h3>
-                    <p>Monday – Friday: 7:00 AM – 8:00 PM</p>
-                    <p>Saturday: 8:00 AM – 4:00 PM</p>
-                    <p style="color: var(--gold); font-weight: 600;">*Exam Weeks: Open down until 12:00 Midnight</p>
-                </div>
+                <div class="col-lg-5">
+                    <div class="info-sidebar ps-lg-4">
+                        
+                        <div class="info-block">
+                            <h3>📍 Campus Location</h3>
+                            <p class="fw-bold text-dark m-0">Student Union Building</p>
+                            <p class="text-muted m-0">1st Floor, Academic Wing Hub North</p>
+                            <p class="text-muted">Nairobi, Kenya</p>
+                        </div>
 
-                <div class="info-block">
-                    <h3>Direct Channels</h3>
-                    <p>📞 Phone: (555) 123-4567</p>
-                    <p>✉️ General: cafe@campus.edu</p>
-                    <p>💼 Corporate: catering-events@campus.edu</p>
+                        <div class="info-block">
+                            <h3>⏰ Operating Hours</h3>
+                            <p class="text-muted mb-1">Monday – Friday: 7:00 AM – 8:00 PM</p>
+                            <p class="text-muted mb-1">Saturday: 8:00 AM – 4:00 PM</p>
+                            <p class="fw-bold" style="color: var(--gold);">*Exam Weeks: Open until 12:00 Midnight</p>
+                        </div>
+
+                        <div class="info-block">
+                            <h3>Direct Channels</h3>
+                            <p class="text-muted mb-1">📞 Phone Support: (555) 123-4567</p>
+                            <p class="text-muted mb-1">✉️ General Inquiries: cafe@campus.edu</p>
+                            <p class="text-muted">💼 Event Catering: catering-events@campus.edu</p>
+                        </div>
+
+                    </div>
                 </div>
 
             </div>
-
         </div>
     </section>
 </main>
 
 <footer>
-    <div class="container footer-grid">
-        <div class="footer-brand">
-            <h3>Campus Café</h3>
-            <p>Providing pristine dining spaces and operational workspace solutions right across university environments.</p>
+    <div class="container">
+        <div class="row g-4 mb-4 pb-4 border-bottom border-secondary">
+            <div class="col-lg-4 col-md-6">
+                <h3>Campus Café</h3>
+                <p class="small mt-3">Providing pristine dining spaces and operational workspace solutions right across university environments.</p>
+            </div>
+            <div class="col-lg-2 col-md-6">
+                <h4>Quick Links</h4>
+                <ul class="list-unstyled d-flex flex-column gap-2 mt-3">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="blog.html">Blog Portal</a></li>
+                    <li><a href="contact.html">Support Hub</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h4>Contact Details</h4>
+                <p class="small mt-3 mb-1">📞 Phone: (555) 123-4567</p>
+                <p class="small">✉️ Email: cafe@campus.edu</p>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h4>Digital Channels</h4>
+                <ul class="list-unstyled d-flex flex-column gap-2 mt-3">
+                    <li><a href="#">Instagram Feed</a></li>
+                    <li><a href="#">TikTok Updates</a></li>
+                    <li><a href="#">Campus Forums</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="footer-links">
-            <h4>Quick Links</h4>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="menu.html">Menu</a></li>
-                <li><a href="blog.html">Blog Portal</a></li>
-                <li><a href="contact.html">Support Hub</a></li>
-            </ul>
+        <div class="text-center small pt-2">
+            <p>&copy; 2026 Campus Café. All Rights Reserved. Engineered with advanced typographic design systems.</p>
         </div>
-        <div class="footer-contact">
-            <h4>Contact Details</h4>
-            <p style="margin-bottom: 0.5rem;">📞 (555) 123-4567</p>
-            <p>✉️ cafe@campus.edu</p>
-        </div>
-        <div class="footer-socials">
-            <h4>Digital Channels</h4>
-            <ul>
-                <li><a href="#">Instagram Feed</a></li>
-                <li><a href="#">TikTok Updates</a></li>
-                <li><a href="#">Campus Forums</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="footer-bottom text-center">
-        <p>&copy; 2026 Campus Café. All Rights Reserved. Engineered with advanced typographic design systems.</p>
     </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
