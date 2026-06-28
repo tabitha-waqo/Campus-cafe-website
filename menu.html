@@ -12,59 +12,76 @@
         body { background-color: var(--bg-primary); color: var(--text-dark); line-height: 1.6; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
         .text-center { text-align: center; }
+        .section-padding { padding: 5rem 0; }
 
-        .top-bar { background-color: var(--accent-dark); color: var(--white); font-size: 0.85rem; padding: 0.6rem 0; }
-        .top-bar-flex { display: flex; justify-content: space-between; }
         header { background-color: var(--white); box-shadow: var(--shadow); position: sticky; top: 0; padding: 1.2rem 0; }
         .header-flex { display: flex; justify-content: space-between; align-items: center; }
-        header h1 { color: var(--accent-dark); font-size: 1.75rem; }
+        header h1 { color: var(--accent-dark); }
         nav { display: flex; gap: 1.5rem; }
         nav a { text-decoration: none; color: var(--text-muted); }
         nav a.active { color: var(--accent-dark); font-weight: bold; }
+        .inner-hero { background-color: var(--bg-secondary); padding: 5rem 0; }
+        .inner-hero h2 { font-size: 3rem; color: var(--accent-dark); }
 
-        /* --- PAGE HERO --- */
-        .inner-hero { background-color: var(--bg-secondary); padding: 5rem 0; border-bottom: 1px solid rgba(74, 124, 102, 0.1); }
-        .inner-hero h2 { font-size: 3rem; color: var(--accent-dark); margin-bottom: 1rem; }
-        .inner-hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin: 0 auto; }
+        /* --- DYNAMIC MENU COLUMNS SYSTEM --- */
+        .menu-sections { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 4rem; }
+        .category-title { font-size: 1.8rem; color: var(--accent-dark); margin-bottom: 2rem; border-bottom: 2px solid var(--accent-light); padding-bottom: 0.5rem; }
+        
+        .menu-list { display: flex; flex-direction: column; gap: 1.5rem; }
+        .menu-item-row { display: flex; justify-content: space-between; align-items: baseline; }
+        .menu-item-row h4 { font-size: 1.2rem; color: var(--text-dark); }
+        .menu-dots { flex-grow: 1; border-bottom: 2px dotted var(--bg-secondary); margin: 0 10px; }
+        .menu-price { font-weight: 700; color: var(--accent-light); }
+        .menu-desc { font-size: 0.9rem; color: var(--text-muted); margin-top: 0.2rem; }
     </style>
 </head>
 <body>
 
-<div class="top-bar">
-    <div class="container top-bar-flex">
-        <span>🎉 Show your student ID for 10% off all espresso drinks!</span>
-        <span>📍 Student Union Building, 1st Floor</span>
-    </div>
-</div>
-
 <header>
     <div class="container header-flex">
         <h1>Campus Café</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="menu.html" class="active">Menu</a>
-        </nav>
+        <nav><a href="index.html">Home</a><a href="about.html">About</a><a href="menu.html" class="active">Menu</a></nav>
     </div>
 </header>
 
 <main>
-    <section class="inner-hero text-center">
-        <div class="container">
-            <h2>Our Menu</h2>
-            <p>Freshly prepared, budget-friendly student fuel designed to keep your focus sharp all semester long.</p>
+    <section class="inner-hero text-center"><div class="container"><h2>Our Menu</h2></div></section>
+
+    <section class="section-padding">
+        <div class="container menu-sections">
+            <div>
+                <h3 class="category-title">☕ Beverages</h3>
+                <div class="menu-list">
+                    <div>
+                        <div class="menu-item-row"><h4>Coffee</h4><div class="menu-dots"></div><span class="menu-price">KSh 150</span></div>
+                        <p class="menu-desc">Premium house blend extracted perfectly from freshly crushed organic beans.</p>
+                    </div>
+                    <div>
+                        <div class="menu-item-row"><h4>Tea</h4><div class="menu-dots"></div><span class="menu-price">KSh 100</span></div>
+                        <p class="menu-desc">Classic local black tea leaves steeped gracefully with optional fresh milk.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="category-title">🍔 Comfort Bites</h3>
+                <div class="menu-list">
+                    <div>
+                        <div class="menu-item-row"><h4>Burger</h4><div class="menu-dots"></div><span class="menu-price">KSh 450</span></div>
+                        <p class="menu-desc">Grilled succulent patty topped with crunchy house greens and custom sauce mixes.</p>
+                    </div>
+                    <div>
+                        <div class="menu-item-row"><h4>Pizza Slice</h4><div class="menu-dots"></div><span class="menu-price">KSh 300</span></div>
+                        <p class="menu-desc">Thick artisan base stacked with premium melted mozzarella and slow-simmered tomato paste.</p>
+                    </div>
+                    <div>
+                        <div class="menu-item-row"><h4>Chicken Wrap</h4><div class="menu-dots"></div><span class="menu-price">KSh 400</span></div>
+                        <p class="menu-desc">Tender pan-seared sliced chicken tightly rolled with mixed vegetables and herb dressing.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
-
-    <div class="container" style="padding: 4rem 0;">
-        <ul>
-            <li>Coffee - KSh 150</li>
-            <li>Tea - KSh 100</li>
-            <li>Burger - KSh 450</li>
-            <li>Pizza Slice - KSh 300</li>
-            <li>Chicken Wrap - KSh 400</li>
-        </ul>
-    </div>
 </main>
 
 <footer><p>© 2026 Campus Café</p></footer>
