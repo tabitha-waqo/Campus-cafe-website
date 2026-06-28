@@ -1,211 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Campus Café - The perfect spot for students to enjoy delicious meals, fresh coffee, and a quiet study environment.">
     <title>Campus Café | Home</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <header>
-
-<h1>Campus Café</h1>
-
-<nav>
-
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="menu.html">Menu</a>
-<a href="gallery.html">Gallery</a>
-<a href="blog.html">Blog</a>
-<a href="faq.html">FAQ</a>
-<a href="contact.html">Contact</a>
-
-</nav>
-
+    <div class="container header-flex">
+        <h1>Campus Café</h1>
+        <nav>
+            <a href="index.html" class="active">Home</a>
+            <a href="about.html">About</a>
+            <a href="menu.html">Menu</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="blog.html">Blog</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </div>
 </header>
 
 <main>
-
-<section class="hero">
-
-<h2>Good Food. Great Coffee. Better Moments.</h2>
-
-<p>
-Enjoy delicious meals, fresh coffee and a relaxing study environment.
-</p>
-
-<a href="menu.html">View Menu</a>
-<a href="contact.html">Contact Us</a>
-
-</section>
-
-<section>
-
-<h2>Welcome</h2>
-
-<p>
-Campus Café is where students come together to enjoy great food,
-study comfortably and create memorable moments.
-</p>
-
-</section>
-
-<section>
-
-<h2>Why Choose Us?</h2>
-
-<article>
-
-<h3>Affordable Meals</h3>
-
-<p>Quality food at affordable prices.</p>
-
-</article>
-
-<article>
-
-<h3>Fresh Coffee</h3>
-
-<p>Prepared throughout the day.</p>
-
-</article>
-
-<article>
-
-<h3>Comfortable Seating</h3>
-
-<p>Perfect for individual and group study.</p>
-
-</article>
-
-</section>
-
-<section>
-
-<h2>Today's Specials</h2>
-
-<ul>
-
-<li>Chicken Burger</li>
-
-<li>Beef Wrap</li>
-
-<li>Latte</li>
-
-<li>Blueberry Muffin</li>
-
-</ul>
-
-<a href="menu.html">View Full Menu →</a>
-
-</section>
-
-<section>
-
-<h2>Study With Us</h2>
-
-<p>
-Enjoy free Wi-Fi, charging points and a peaceful atmosphere while working on assignments.
-</p>
-
-</section>
-
-<section>
-
-<h2>Opening Hours</h2>
-
-<table>
-
-<tr>
-
-<th>Day</th>
-
-<th>Hours</th>
-
-</tr>
-
-<tr>
-
-<td>Monday - Friday</td>
-
-<td>7 AM - 8 PM</td>
-
-</tr>
-
-<tr>
-
-<td>Saturday</td>
-
-<td>8 AM - 6 PM</td>
-
-</tr>
-
-<tr>
-
-<td>Sunday</td>
-
-<td>Closed</td>
-
-</tr>
-
-</table>
-
-</section>
-
-<section>
-
-<h2>What Our Customers Say</h2>
-
-<article>
-
-<h3>⭐⭐⭐⭐⭐</h3>
-
-<p>
-"The best coffee on campus. I visit almost every day."
-</p>
-
-<p><strong>- Brian</strong></p>
-
-</article>
-
-<article>
-
-<h3>⭐⭐⭐⭐⭐</h3>
-
-<p>
-"I enjoy studying here because it's quiet and comfortable."
-</p>
-
-<p><strong>- Faith</strong></p>
-
-</article>
-
-<article>
-
-<h3>⭐⭐⭐⭐⭐</h3>
-
-<p>
-"The food is delicious and the staff are very friendly."
-</p>
-
-<p><strong>- Kevin</strong></p>
-
-</article>
-
-</section>
-
+    <section class="hero">
+        <div class="container">
+            <h2>Good Food. Great Coffee. Better Moments.</h2>
+            <p>Enjoy delicious meals, fresh coffee and a relaxing study environment.</p>
+            <div class="hero-cta">
+                <a href="menu.html" class="btn btn-primary">View Menu</a>
+                <a href="contact.html" class="btn btn-secondary">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="welcome-section">
+        <div class="container text-center">
+            <h2>Welcome</h2>
+            <p>Campus Café is where students come together to enjoy great food, study comfortably and create memorable moments.</p>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <h2>Why Choose Us?</h2>
+            <div class="grid-3-col">
+                <article class="feature-card">
+                    <h3>Affordable Meals</h3>
+                    <p>Quality food at affordable prices.</p>
+                </article>
+                <article class="feature-card">
+                    <h3>Fresh Coffee</h3>
+                    <p>Prepared throughout the day.</p>
+                </article>
+                <article class="feature-card">
+                    <h3>Comfortable Seating</h3>
+                    <p>Perfect for individual and group study.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="specials-section">
+        <div class="container">
+            <h2>Today's Specials</h2>
+            <ul>
+                <li>Chicken Burger</li>
+                <li>Beef Wrap</li>
+                <li>Latte</li>
+                <li>Blueberry Muffin</li>
+            </ul>
+            <a href="menu.html">View Full Menu →</a>
+        </div>
+    </section>
+
+    <section class="study-section">
+        <div class="container">
+            <h2>Study With Us</h2>
+            <p>Enjoy free Wi-Fi, charging points and a peaceful atmosphere while working on assignments.</p>
+        </div>
+    </section>
+
+    <section class="hours-section">
+        <div class="container">
+            <h2>Opening Hours</h2>
+            <table>
+                <tr>
+                    <th>Day</th>
+                    <th>Hours</th>
+                </tr>
+                <tr>
+                    <td>Monday - Friday</td>
+                    <td>7 AM - 8 PM</td>
+                </tr>
+                <tr>
+                    <td>Saturday</td>
+                    <td>8 AM - 6 PM</td>
+                </tr>
+                <tr>
+                    <td>Sunday</td>
+                    <td>Closed</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <section class="testimonials-section">
+        <div class="container">
+            <h2>What Our Customers Say</h2>
+            <div class="grid-3-col">
+                <article class="testimonial-card">
+                    <h3>⭐⭐⭐⭐⭐</h3>
+                    <p>"The best coffee on campus. I visit almost every day."</p>
+                    <p><strong>- Brian</strong></p>
+                </article>
+                <article class="testimonial-card">
+                    <h3>⭐⭐⭐⭐⭐</h3>
+                    <p>"I enjoy studying here because it's quiet and comfortable."</p>
+                    <p><strong>- Faith</strong></p>
+                </article>
+                <article class="testimonial-card">
+                    <h3>⭐⭐⭐⭐⭐</h3>
+                    <p>"The food is delicious and the staff are very friendly."</p>
+                    <p><strong>- Kevin</strong></p>
+                </article>
+            </div>
+        </div>
+    </section>
 </main>
 
 <footer>
-
-<p>&copy; 2026 Campus Café. All Rights Reserved.</p>
-
+    <div class="container text-center">
+        <p>&copy; 2026 Campus Café. All Rights Reserved.</p>
+    </div>
 </footer>
 
 </body>
-
 </html>
