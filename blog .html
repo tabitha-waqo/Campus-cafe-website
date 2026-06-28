@@ -3,75 +3,314 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog | Campus Café</title>
+    <meta name="description" content="Read the latest news, announcements, and lifestyle updates from the Campus Café team.">
+    <title>Blog Portal | Campus Café</title>
     <style>
+        /* --- DESIGN SYSTEM & VARIABLES --- */
         :root {
-            --bg-primary: #fdfbf7;--bg-secondary: #f4efe6;--accent-dark: #2c4a3e;--accent-light: #4a7c66;--text-dark: #1e2d27;--text-muted: #5c6b64;--white: #ffffff;--gold: #dfa837;--shadow: 0 8px 24px rgba(0, 0, 0, 0.05);--transition: all 0.3s ease;
+            --bg-primary: #fdfbf7;
+            --bg-secondary: #f4efe6;
+            --accent-dark: #2c4a3e;
+            --accent-light: #4a7c66;
+            --text-dark: #1e2d27;
+            --text-muted: #5c6b64;
+            --white: #ffffff;
+            --gold: #dfa837;
+            --shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
-        body { background-color: var(--bg-primary); color: var(--text-dark); line-height: 1.6; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
         .text-center { text-align: center; }
         .section-padding { padding: 5rem 0; }
 
-        header { background-color: var(--white); box-shadow: var(--shadow); position: sticky; top: 0; padding: 1.2rem 0; }
-        .header-flex { display: flex; justify-content: space-between; align-items: center; }
-        header h1 { color: var(--accent-dark); }
-        nav { display: flex; gap: 1.5rem; }
-        nav a { text-decoration: none; color: var(--text-muted); }
-        nav a.active { color: var(--accent-dark); font-weight: bold; }
-        .inner-hero { background-color: var(--bg-secondary); padding: 5rem 0; }
-        .inner-hero h2 { font-size: 3rem; color: var(--accent-dark); }
+        /* --- TOP BANNER --- */
+        .top-bar {
+            background-color: var(--accent-dark);
+            color: var(--white);
+            font-size: 0.85rem;
+            padding: 0.6rem 0;
+            font-weight: 500;
+        }
+        .top-bar-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
 
-        /* --- ARTICLE CARDS WORKSPACE --- */
-        .grid-3-col { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
-        .blog-card { background-color: var(--white); padding: 2.5rem; border-radius: 4px; box-shadow: var(--shadow); }
-        .blog-meta { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem; display: block; }
-        .blog-card h3 { color: var(--accent-dark); font-size: 1.4rem; margin-bottom: 1rem; }
-        .blog-link { display: inline-block; margin-top: 1.5rem; color: var(--accent-light); text-decoration: none; font-weight: 600; }
+        /* --- NAVIGATION HEADER --- */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            padding: 1.2rem 0;
+        }
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            color: var(--accent-dark);
+            font-size: 1.75rem;
+            font-weight: 800;
+        }
+        nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        nav a:hover, nav a.active {
+            color: var(--accent-dark);
+        }
+
+        /* --- INNER PAGE HERO --- */
+        .inner-hero {
+            background-color: var(--bg-secondary);
+            padding: 5rem 0;
+            border-bottom: 1px solid rgba(74, 124, 102, 0.1);
+        }
+        .inner-hero h2 {
+            font-size: 3rem;
+            color: var(--accent-dark);
+            margin-bottom: 1rem;
+        }
+        .inner-hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- ARTICLE LAYOUT COMPONENT SYSTEM --- */
+        .grid-3-col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+        .blog-card {
+            background-color: var(--white);
+            padding: 2.5rem;
+            border-radius: 4px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+        }
+        .card-category-badge {
+            display: inline-block;
+            background-color: var(--bg-secondary);
+            color: var(--accent-dark);
+            padding: 0.2rem 0.6rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 2px;
+            margin-bottom: 1rem;
+            width: max-content;
+        }
+        .blog-meta-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+        .blog-card h3 {
+            color: var(--accent-dark);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        .blog-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        .blog-read-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .blog-read-link:hover {
+            color: var(--accent-dark);
+            padding-left: 4px;
+        }
+
+        /* --- DETAILED MULTI-COLUMN FOOTER --- */
+        footer {
+            background-color: var(--text-dark);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 4rem 0 2rem 0;
+            margin-top: 5rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 3rem;
+        }
+        .footer-brand h3, .footer-links h4, .footer-contact h4, .footer-socials h4 {
+            color: var(--white);
+            margin-bottom: 1.2rem;
+        }
+        .footer-links ul, .footer-socials ul { list-style: none; }
+        .footer-links ul li, .footer-socials ul li { margin-bottom: 0.6rem; }
+        .footer-links ul li a, .footer-socials ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .footer-links ul li a:hover, .footer-socials ul li a:hover { color: var(--gold); }
+        .footer-bottom { font-size: 0.85rem; }
+
+        @media (max-width: 992px) {
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .grid-3-col { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
 
+<div class="top-bar">
+    <div class="container top-bar-flex">
+        <span>🎉 Show your student ID for 10% off all espresso drinks!</span>
+        <span>📍 Student Union Building, 1st Floor</span>
+    </div>
+</div>
+
 <header>
     <div class="container header-flex">
         <h1>Campus Café</h1>
-        <nav><a href="index.html">Home</a><a href="about.html">About</a><a href="blog.html" class="active">Blog</a></nav>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="menu.html">Menu</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="blog.html" class="active">Blog</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contact.html">Contact</a>
+        </nav>
     </div>
 </header>
 
 <main>
-    <section class="inner-hero text-center"><div class="container"><h2>Campus Journal</h2></div></section>
+    <section class="inner-hero text-center">
+        <div class="container">
+            <h2>Campus Journal</h2>
+            <p>Your main hub for student food deals, late-night study updates, and culinary events on campus.</p>
+        </div>
+    </section>
 
     <section class="section-padding">
         <div class="container">
             <div class="grid-3-col">
+                
                 <article class="blog-card">
-                    <span class="blog-meta">June 28, 2026 • Promotions</span>
-                    <h3>New Student Discount</h3>
-                    <p>Students now receive a 10% discount on selected meals every Friday. Make sure to bring your valid student ID card directly to our service desk terminal!</p>
-                    <a href="#" class="blog-link">Read More →</a>
+                    <div>
+                        <span class="card-category-badge">Promotions</span>
+                        <p class="blog-meta-date">June 28, 2026</p>
+                        <h3>New Student Discount</h3>
+                        <p>Students now receive a 10% discount on selected meals every Friday. Make sure to present your valid university student identification card directly to our counter cashier before scanning your billing slip logs!</p>
+                    </div>
+                    <a href="#" class="blog-read-link">Read Full Post →</a>
                 </article>
 
                 <article class="blog-card">
-                    <span class="blog-meta">June 25, 2026 • Campus Life</span>
-                    <h3>Midterm Exam Late Hours</h3>
-                    <p>To assist with your study schedules, our floor spaces and coffee bar will remain fully operational until midnight all through the upcoming examination weeks.</p>
-                    <a href="#" class="blog-link">Read More →</a>
+                    <div>
+                        <span class="card-category-badge">Campus Life</span>
+                        <p class="blog-meta-date">June 25, 2026</p>
+                        <h3>Midterm Exam Late Hours</h3>
+                        <p>To support your upcoming revision blocks, our collaborative group rooms, study spaces, and back kitchen espresso counters will fully remain open down until midnight throughout the entire examination cycle.</p>
+                    </div>
+                    <a href="#" class="blog-read-link">Read Full Post →</a>
                 </article>
 
                 <article class="blog-card">
-                    <span class="blog-meta">June 18, 2026 • Coffee Culture</span>
-                    <h3>Our New Seasonal Roast</h3>
-                    <p>Directly sourced from organic farming collectives, our fresh single-origin espresso features incredible subtle notes of cocoa and caramelized brown sugar.</p>
-                    <a href="#" class="blog-link">Read More →</a>
+                    <div>
+                        <span class="card-category-badge">Behind The Beans</span>
+                        <p class="blog-meta-date">June 18, 2026</p>
+                        <h3>Our New Seasonal Roast</h3>
+                        <p>Directly sourced from eco-friendly agriculture networks, our newly introduced organic drip single-origin beans yield incredibly smooth undertones of roasted hazelnuts and natural brown sugar crust sweet notes.</p>
+                    </div>
+                    <a href="#" class="blog-read-link">Read Full Post →</a>
                 </article>
+
             </div>
         </div>
     </section>
 </main>
 
-<footer><p>© 2026 Campus Café</p></footer>
+<footer>
+    <div class="container footer-grid">
+        <div class="footer-brand">
+            <h3>Campus Café</h3>
+            <p>Providing pristine dining spaces and operational workspace solutions right across university environments.</p>
+        </div>
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="blog.html">Blog Portal</a></li>
+                <li><a href="contact.html">Support Hub</a></li>
+            </ul>
+        </div>
+        <div class="footer-contact">
+            <h4>Contact Details</h4>
+            <p style="margin-bottom: 0.5rem;">📞 (555) 123-4567</p>
+            <p>✉️ cafe@campus.edu</p>
+        </div>
+        <div class="footer-socials">
+            <h4>Digital Channels</h4>
+            <ul>
+                <li><a href="#">Instagram Feed</a></li>
+                <li><a href="#">TikTok Updates</a></li>
+                <li><a href="#">Campus Forums</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom text-center">
+        <p>&copy; 2026 Campus Café. All Rights Reserved. Engineered with advanced typographic design systems.</p>
+    </div>
+</footer>
 
 </body>
 </html>
