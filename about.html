@@ -3,41 +3,250 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About Campus Café - Our story, mission, and dedication to the student community.">
     <title>About Us | Campus Café</title>
     <style>
+        /* --- DESIGN SYSTEM & VARIABLES --- */
         :root {
-            --bg-primary: #fdfbf7;--bg-secondary: #f4efe6;--accent-dark: #2c4a3e;--accent-light: #4a7c66;--text-dark: #1e2d27;--text-muted: #5c6b64;--white: #ffffff;--gold: #dfa837;--shadow: 0 8px 24px rgba(0, 0, 0, 0.05);--transition: all 0.3s ease;
+            --bg-primary: #fdfbf7;
+            --bg-secondary: #f4efe6;
+            --accent-dark: #2c4a3e;
+            --accent-light: #4a7c66;
+            --text-dark: #1e2d27;
+            --text-muted: #5c6b64;
+            --white: #ffffff;
+            --gold: #dfa837;
+            --shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
-        body { background-color: var(--bg-primary); color: var(--text-dark); line-height: 1.6; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
         .text-center { text-align: center; }
         .section-padding { padding: 5rem 0; }
 
-        .top-bar { background-color: var(--accent-dark); color: var(--white); font-size: 0.85rem; padding: 0.6rem 0; display: flex; }
-        header { background-color: var(--white); box-shadow: var(--shadow); position: sticky; top: 0; padding: 1.2rem 0; }
-        .header-flex { display: flex; justify-content: space-between; align-items: center; }
-        header h1 { color: var(--accent-dark); }
-        nav { display: flex; gap: 1.5rem; }
-        nav a { text-decoration: none; color: var(--text-muted); }
-        nav a.active { color: var(--accent-dark); font-weight: bold; }
+        /* --- TOP BANNER --- */
+        .top-bar {
+            background-color: var(--accent-dark);
+            color: var(--white);
+            font-size: 0.85rem;
+            padding: 0.6rem 0;
+            font-weight: 500;
+        }
+        .top-bar-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
 
-        .inner-hero { background-color: var(--bg-secondary); padding: 5rem 0; }
-        .inner-hero h2 { font-size: 3rem; color: var(--accent-dark); }
-        .split-50-50 { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 4rem; }
-        .story-block { background-color: var(--white); padding: 3rem; border-radius: 4px; box-shadow: var(--shadow); border-left: 5px solid var(--accent-light); }
+        /* --- NAVIGATION HEADER --- */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            padding: 1.2rem 0;
+        }
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            color: var(--accent-dark);
+            font-size: 1.75rem;
+            font-weight: 800;
+        }
+        nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        nav a:hover, nav a.active {
+            color: var(--accent-dark);
+        }
 
-        /* --- VALUES & STATS SYSTEM --- */
+        /* --- INNER PAGE HERO --- */
+        .inner-hero {
+            background-color: var(--bg-secondary);
+            padding: 5rem 0;
+            border-bottom: 1px solid rgba(74, 124, 102, 0.1);
+        }
+        .inner-hero h2 {
+            font-size: 3rem;
+            color: var(--accent-dark);
+            margin-bottom: 1rem;
+        }
+        .inner-hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- COLS / SECTIONS LAYOUT --- */
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--accent-dark);
+            margin-bottom: 1rem;
+        }
+        .section-subtitle {
+            color: var(--text-muted);
+            margin-bottom: 3.5rem;
+            font-size: 1.1rem;
+        }
+
+        .split-50-50 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .grid-3-col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Story Block Card Style */
+        .story-block {
+            background-color: var(--white);
+            padding: 3rem;
+            border-radius: 4px;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--accent-light);
+        }
+        .story-block h3 {
+            color: var(--accent-dark);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .story-block p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Value Cards */
         .values-section { background-color: var(--bg-secondary); }
-        .grid-3-col { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .value-card { background-color: var(--white); padding: 2.5rem; border-radius: 4px; box-shadow: var(--shadow); }
-        .value-card .icon { font-size: 2.5rem; margin-bottom: 1rem; }
-        
-        .stats-panel { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem; margin-top: 3rem; padding: 3rem; background-color: var(--accent-dark); color: var(--white); border-radius: 4px; }
-        .stat-item h4 { font-size: 2.5rem; color: var(--gold); font-weight: 800; }
+        .value-card {
+            background-color: var(--white);
+            padding: 2.5rem;
+            border-radius: 4px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+        .value-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .value-card h3 {
+            color: var(--accent-dark);
+            margin-bottom: 0.75rem;
+        }
+        .value-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Stat Counter Framework */
+        .stats-panel {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 3rem;
+            padding: 3rem;
+            background-color: var(--accent-dark);
+            color: var(--white);
+            border-radius: 4px;
+        }
+        .stat-item h4 {
+            font-size: 2.5rem;
+            color: var(--gold);
+            font-weight: 800;
+        }
+        .stat-item p {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* --- DETAILED MULTI-COLUMN FOOTER --- */
+        footer {
+            background-color: var(--text-dark);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 4rem 0 2rem 0;
+            margin-top: 5rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 3rem;
+        }
+        .footer-brand h3, .footer-links h4, .footer-contact h4, .footer-socials h4 {
+            color: var(--white);
+            margin-bottom: 1.2rem;
+        }
+        .footer-links ul, .footer-socials ul { list-style: none; }
+        .footer-links ul li, .footer-socials ul li { margin-bottom: 0.6rem; }
+        .footer-links ul li a, .footer-socials ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .footer-links ul li a:hover, .footer-socials ul li a:hover { color: var(--gold); }
+        .footer-bottom { font-size: 0.85rem; }
+
+        @media (max-width: 992px) {
+            .split-50-50 { grid-template-columns: 1fr; gap: 2rem; }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .footer-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
+
+<div class="top-bar">
+    <div class="container top-bar-flex">
+        <span>🎉 Show your student ID for 10% off all espresso drinks!</span>
+        <span>📍 Student Union Building, 1st Floor</span>
+    </div>
+</div>
 
 <header>
     <div class="container header-flex">
@@ -45,6 +254,11 @@
         <nav>
             <a href="index.html">Home</a>
             <a href="about.html" class="active">About</a>
+            <a href="menu.html">Menu</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="blog.html">Blog</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contact.html">Contact</a>
         </nav>
     </div>
 </header>
@@ -53,53 +267,99 @@
     <section class="inner-hero text-center">
         <div class="container">
             <h2>About Us</h2>
-            <p>Cultivating an optimized workspace directly inside the heart of the university ecosystem.</p>
+            <p>Cultivating a distinct culinary community and optimized workspace directly inside the heart of the university ecosystem.</p>
         </div>
     </section>
 
     <section class="story-section section-padding">
         <div class="container split-50-50">
-            <div>
-                <h2 style="font-size: 2.2rem; color: var(--accent-dark);">Our Roots</h2>
-                <p style="color: var(--text-muted);">Campus Café was established in 2024 to solve the critical student need for premium, accessible food alongside functional workspaces.</p>
+            <div class="content-left">
+                <h2 class="section-title">Our Roots</h2>
+                <p style="margin-bottom: 1.5rem; color: var(--text-muted);">Campus Café was established in 2024 to fundamentally solve a prominent issue for students: the critical need for premium, accessible food paired alongside structured productivity workspaces.</p>
+                <p style="color: var(--text-muted);">We realized that a university coffee shop shouldn't just brew drinks—it should act as a functional anchor for collaboration, group learning, and academic breakthrough milestones.</p>
             </div>
-            <div class="story-block">
-                <h3>Our Mission</h3>
-                <p>"To balance intense study targets, rewarding social connections, and fresh high-quality meals."</p>
+            <div class="content-right">
+                <div class="story-block">
+                    <h3>Our Mission Statement</h3>
+                    <p>"To create an intentionally designed, welcoming space where students can seamlessly balance intense study targets, rewarding social connections, and fresh high-quality meals without ever leaving campus boundaries."</p>
+                </div>
             </div>
         </div>
     </section>
 
     <section class="values-section section-padding text-center">
         <div class="container">
+            <h2 class="section-title">What Drives Us</h2>
+            <p class="section-subtitle">Our operating philosophy centers around three core structural pillars.</p>
             <div class="grid-3-col">
                 <div class="value-card">
                     <div class="icon">🌱</div>
                     <h3>Fresh Quality</h3>
-                    <p>We source premium local ingredients and roast custom organic espresso beans daily.</p>
+                    <p>We source premium local ingredients and roast custom organic espresso beans daily to ensure high mental clarity for your studies.</p>
                 </div>
                 <div class="value-card">
                     <div class="icon">🤝</div>
                     <h3>Inclusivity</h3>
-                    <p>A welcoming, vibrant community atmosphere where group brainstorming thrives.</p>
+                    <p>A welcoming, vibrant community atmosphere where group brainstorming and individual focus tracks are equally supported.</p>
                 </div>
                 <div class="value-card">
                     <div class="icon">🎓</div>
                     <h3>Student First</h3>
-                    <p>Pricing configurations structured entirely around standard exam schedules.</p>
+                    <p>Pricing configurations, functional outlet networks, and late-night hour frameworks structured entirely around exam schedules.</p>
                 </div>
             </div>
 
             <div class="stats-panel">
-                <div class="stat-item"><h4>2024</h4><p>Founded</p></div>
-                <div class="stat-item"><h4>50k+</h4><p>Cups Served</p></div>
-                <div class="stat-item"><h4>100%</h4><p>Student Focused</p></div>
+                <div class="stat-item">
+                    <h4>2024</h4>
+                    <p>Founded</p>
+                </div>
+                <div class="stat-item">
+                    <h4>50k+</h4>
+                    <p>Cups Served</p>
+                </div>
+                <div class="stat-item">
+                    <h4>100%</h4>
+                    <p>Student Focused</p>
+                </div>
             </div>
         </div>
     </section>
 </main>
 
-<footer><p>© 2026 Campus Café</p></footer>
+<footer>
+    <div class="container footer-grid">
+        <div class="footer-brand">
+            <h3>Campus Café</h3>
+            <p>Providing pristine dining spaces and operational workspace solutions right across university environments.</p>
+        </div>
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="blog.html">Blog Portal</a></li>
+                <li><a href="contact.html">Support Hub</a></li>
+            </ul>
+        </div>
+        <div class="footer-contact">
+            <h4>Contact Details</h4>
+            <p style="margin-bottom: 0.5rem;">📞 (555) 123-4567</p>
+            <p>✉️ cafe@campus.edu</p>
+        </div>
+        <div class="footer-socials">
+            <h4>Digital Channels</h4>
+            <ul>
+                <li><a href="#">Instagram Feed</a></li>
+                <li><a href="#">TikTok Updates</a></li>
+                <li><a href="#">Campus Forums</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom text-center">
+        <p>&copy; 2026 Campus Café. All Rights Reserved. Engineered with advanced typographic design systems.</p>
+    </div>
+</footer>
 
 </body>
 </html>
