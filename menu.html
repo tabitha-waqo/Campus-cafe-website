@@ -6,47 +6,26 @@
     <title>Menu | Campus Café</title>
     <style>
         :root {
-            --bg-primary: #fdfbf7;
-            --bg-secondary: #f4efe6;
-            --accent-dark: #2c4a3e;
-            --accent-light: #4a7c66;
-            --text-dark: #1e2d27;
-            --text-muted: #5c6b64;
-            --white: #ffffff;
-            --gold: #dfa837;
-            --shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-            --transition: all 0.3s ease;
+            --bg-primary: #fdfbf7;--bg-secondary: #f4efe6;--accent-dark: #2c4a3e;--accent-light: #4a7c66;--text-dark: #1e2d27;--text-muted: #5c6b64;--white: #ffffff;--gold: #dfa837;--shadow: 0 8px 24px rgba(0, 0, 0, 0.05);--transition: all 0.3s ease;
         }
-
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
         body { background-color: var(--bg-primary); color: var(--text-dark); line-height: 1.6; }
-        
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
         .text-center { text-align: center; }
 
-        /* --- STICKY NAVIGATION ARCHITECTURE --- */
-        .top-bar {
-            background-color: var(--accent-dark);
-            color: var(--white);
-            font-size: 0.85rem;
-            padding: 0.6rem 0;
-            font-weight: 500;
-        }
-        .top-bar-flex { display: flex; justify-content: space-between; align-items: center; }
-        
-        header {
-            background-color: var(--white);
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 999;
-            padding: 1.2rem 0;
-        }
+        .top-bar { background-color: var(--accent-dark); color: var(--white); font-size: 0.85rem; padding: 0.6rem 0; }
+        .top-bar-flex { display: flex; justify-content: space-between; }
+        header { background-color: var(--white); box-shadow: var(--shadow); position: sticky; top: 0; padding: 1.2rem 0; }
         .header-flex { display: flex; justify-content: space-between; align-items: center; }
-        header h1 { color: var(--accent-dark); font-size: 1.75rem; font-weight: 800; }
+        header h1 { color: var(--accent-dark); font-size: 1.75rem; }
         nav { display: flex; gap: 1.5rem; }
-        nav a { text-decoration: none; color: var(--text-muted); font-weight: 500; transition: var(--transition); }
-        nav a:hover, nav a.active { color: var(--accent-dark); }
+        nav a { text-decoration: none; color: var(--text-muted); }
+        nav a.active { color: var(--accent-dark); font-weight: bold; }
+
+        /* --- PAGE HERO --- */
+        .inner-hero { background-color: var(--bg-secondary); padding: 5rem 0; border-bottom: 1px solid rgba(74, 124, 102, 0.1); }
+        .inner-hero h2 { font-size: 3rem; color: var(--accent-dark); margin-bottom: 1rem; }
+        .inner-hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin: 0 auto; }
     </style>
 </head>
 <body>
@@ -69,20 +48,26 @@
     </div>
 </header>
 
-<div class="container" style="padding: 4rem 0;">
-    <h2>Our Menu</h2>
-    <ul>
-        <li>Coffee - KSh 150</li>
-        <li>Tea - KSh 100</li>
-        <li>Burger - KSh 450</li>
-        <li>Pizza Slice - KSh 300</li>
-        <li>Chicken Wrap - KSh 400</li>
-    </ul>
-</div>
+<main>
+    <section class="inner-hero text-center">
+        <div class="container">
+            <h2>Our Menu</h2>
+            <p>Freshly prepared, budget-friendly student fuel designed to keep your focus sharp all semester long.</p>
+        </div>
+    </section>
 
-<footer>
-    <p>© 2026 Campus Café</p>
-</footer>
+    <div class="container" style="padding: 4rem 0;">
+        <ul>
+            <li>Coffee - KSh 150</li>
+            <li>Tea - KSh 100</li>
+            <li>Burger - KSh 450</li>
+            <li>Pizza Slice - KSh 300</li>
+            <li>Chicken Wrap - KSh 400</li>
+        </ul>
+    </div>
+</main>
+
+<footer><p>© 2026 Campus Café</p></footer>
 
 </body>
 </html>
