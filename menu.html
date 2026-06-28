@@ -3,88 +3,346 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu | Campus Café</title>
+    <meta name="description" content="Explore the Campus Café Digital Menu - High-quality student meals and premium coffee blends.">
+    <title>Our Menu | Campus Café</title>
     <style>
+        /* --- DESIGN SYSTEM & VARIABLES --- */
         :root {
-            --bg-primary: #fdfbf7;--bg-secondary: #f4efe6;--accent-dark: #2c4a3e;--accent-light: #4a7c66;--text-dark: #1e2d27;--text-muted: #5c6b64;--white: #ffffff;--gold: #dfa837;--shadow: 0 8px 24px rgba(0, 0, 0, 0.05);--transition: all 0.3s ease;
+            --bg-primary: #fdfbf7;
+            --bg-secondary: #f4efe6;
+            --accent-dark: #2c4a3e;
+            --accent-light: #4a7c66;
+            --text-dark: #1e2d27;
+            --text-muted: #5c6b64;
+            --white: #ffffff;
+            --gold: #dfa837;
+            --shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
-        body { background-color: var(--bg-primary); color: var(--text-dark); line-height: 1.6; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
         .text-center { text-align: center; }
         .section-padding { padding: 5rem 0; }
 
-        header { background-color: var(--white); box-shadow: var(--shadow); position: sticky; top: 0; padding: 1.2rem 0; }
-        .header-flex { display: flex; justify-content: space-between; align-items: center; }
-        header h1 { color: var(--accent-dark); }
-        nav { display: flex; gap: 1.5rem; }
-        nav a { text-decoration: none; color: var(--text-muted); }
-        nav a.active { color: var(--accent-dark); font-weight: bold; }
-        .inner-hero { background-color: var(--bg-secondary); padding: 5rem 0; }
-        .inner-hero h2 { font-size: 3rem; color: var(--accent-dark); }
+        /* --- TOP BANNER --- */
+        .top-bar {
+            background-color: var(--accent-dark);
+            color: var(--white);
+            font-size: 0.85rem;
+            padding: 0.6rem 0;
+            font-weight: 500;
+        }
+        .top-bar-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
 
-        /* --- DYNAMIC MENU COLUMNS SYSTEM --- */
-        .menu-sections { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 4rem; }
-        .category-title { font-size: 1.8rem; color: var(--accent-dark); margin-bottom: 2rem; border-bottom: 2px solid var(--accent-light); padding-bottom: 0.5rem; }
-        
-        .menu-list { display: flex; flex-direction: column; gap: 1.5rem; }
-        .menu-item-row { display: flex; justify-content: space-between; align-items: baseline; }
-        .menu-item-row h4 { font-size: 1.2rem; color: var(--text-dark); }
-        .menu-dots { flex-grow: 1; border-bottom: 2px dotted var(--bg-secondary); margin: 0 10px; }
-        .menu-price { font-weight: 700; color: var(--accent-light); }
-        .menu-desc { font-size: 0.9rem; color: var(--text-muted); margin-top: 0.2rem; }
+        /* --- NAVIGATION HEADER --- */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            padding: 1.2rem 0;
+        }
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            color: var(--accent-dark);
+            font-size: 1.75rem;
+            font-weight: 800;
+        }
+        nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        nav a:hover, nav a.active {
+            color: var(--accent-dark);
+        }
+
+        /* --- INNER PAGE HERO --- */
+        .inner-hero {
+            background-color: var(--bg-secondary);
+            padding: 5rem 0;
+            border-bottom: 1px solid rgba(74, 124, 102, 0.1);
+        }
+        .inner-hero h2 {
+            font-size: 3rem;
+            color: var(--accent-dark);
+            margin-bottom: 1rem;
+        }
+        .inner-hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- MENU COLUMN & CARD COMPONENT CONFIGURATIONS --- */
+        .menu-sections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 4rem;
+        }
+        .category-column h3 {
+            font-size: 1.8rem;
+            color: var(--accent-dark);
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--accent-light);
+            padding-bottom: 0.5rem;
+        }
+        .menu-cards-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .menu-item-card {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 4px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .menu-item-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+        }
+        .menu-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+        }
+        .menu-card-header h4 {
+            font-size: 1.25rem;
+            color: var(--accent-dark);
+        }
+        .menu-dots-divider {
+            flex-grow: 1;
+            border-bottom: 1px dashed var(--bg-secondary);
+            margin: 0 12px;
+        }
+        .price-tag {
+            color: var(--accent-light);
+            font-weight: 700;
+            font-size: 1.15rem;
+        }
+        .item-description {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Notice banner component */
+        .dietary-notice {
+            background-color: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 4px;
+            margin-top: 5rem;
+            border-left: 4px solid var(--gold);
+        }
+
+        /* --- DETAILED MULTI-COLUMN FOOTER --- */
+        footer {
+            background-color: var(--text-dark);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 4rem 0 2rem 0;
+            margin-top: 5rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 3rem;
+        }
+        .footer-brand h3, .footer-links h4, .footer-contact h4, .footer-socials h4 {
+            color: var(--white);
+            margin-bottom: 1.2rem;
+        }
+        .footer-links ul, .footer-socials ul { list-style: none; }
+        .footer-links ul li, .footer-socials ul li { margin-bottom: 0.6rem; }
+        .footer-links ul li a, .footer-socials ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .footer-links ul li a:hover, .footer-socials ul li a:hover { color: var(--gold); }
+        .footer-bottom { font-size: 0.85rem; }
+
+        @media (max-width: 992px) {
+            .menu-sections-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .footer-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
 
+<div class="top-bar">
+    <div class="container top-bar-flex">
+        <span>🎉 Show your student ID for 10% off all espresso drinks!</span>
+        <span>📍 Student Union Building, 1st Floor</span>
+    </div>
+</div>
+
 <header>
     <div class="container header-flex">
         <h1>Campus Café</h1>
-        <nav><a href="index.html">Home</a><a href="about.html">About</a><a href="menu.html" class="active">Menu</a></nav>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="menu.html" class="active">Menu</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="blog.html">Blog</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contact.html">Contact</a>
+        </nav>
     </div>
 </header>
 
 <main>
-    <section class="inner-hero text-center"><div class="container"><h2>Our Menu</h2></div></section>
+    <section class="inner-hero text-center">
+        <div class="container">
+            <h2>Our Menu</h2>
+            <p>Freshly prepared, budget-friendly student fuel designed to keep your focus sharp all semester long.</p>
+        </div>
+    </section>
 
     <section class="section-padding">
-        <div class="container menu-sections">
-            <div>
-                <h3 class="category-title">☕ Beverages</h3>
-                <div class="menu-list">
-                    <div>
-                        <div class="menu-item-row"><h4>Coffee</h4><div class="menu-dots"></div><span class="menu-price">KSh 150</span></div>
-                        <p class="menu-desc">Premium house blend extracted perfectly from freshly crushed organic beans.</p>
-                    </div>
-                    <div>
-                        <div class="menu-item-row"><h4>Tea</h4><div class="menu-dots"></div><span class="menu-price">KSh 100</span></div>
-                        <p class="menu-desc">Classic local black tea leaves steeped gracefully with optional fresh milk.</p>
+        <div class="container">
+            <div class="menu-sections-grid">
+                
+                <div class="category-column">
+                    <h3>☕ House Beverages</h3>
+                    <div class="menu-cards-stack">
+                        <article class="menu-item-card">
+                            <div class="menu-card-header">
+                                <h4>Coffee</h4>
+                                <div class="menu-dots-divider"></div>
+                                <span class="price-tag">KSh 150</span>
+                            </div>
+                            <p class="item-description">Premium aromatic house espresso blend extracted from freshly crushed organic beans.</p>
+                        </article>
+
+                        <article class="menu-item-card">
+                            <div class="menu-card-header">
+                                <h4>Tea</h4>
+                                <div class="menu-dots-divider"></div>
+                                <span class="price-tag">KSh 100</span>
+                            </div>
+                            <p class="item-description">Classic local top-tier tea leaves steeped gracefully with optional steamed farm milk.</p>
+                        </article>
                     </div>
                 </div>
+
+                <div class="category-column">
+                    <h3>🍔 Comfort Bites</h3>
+                    <div class="menu-cards-stack">
+                        <article class="menu-item-card">
+                            <div class="menu-card-header">
+                                <h4>Burger</h4>
+                                <div class="menu-dots-divider"></div>
+                                <span class="price-tag">KSh 450</span>
+                            </div>
+                            <p class="item-description">Succulent grilled protein patty topped with crunchy crisp garden greens and house artisan glaze.</p>
+                        </article>
+
+                        <article class="menu-item-card">
+                            <div class="menu-card-header">
+                                <h4>Pizza Slice</h4>
+                                <div class="menu-dots-divider"></div>
+                                <span class="price-tag">KSh 300</span>
+                            </div>
+                            <p class="item-description">Thick crispy base loaded completely with rich strings of stringy mozzarella and basil tomato paste.</p>
+                        </article>
+
+                        <article class="menu-item-card">
+                            <div class="menu-card-header">
+                                <h4>Chicken Wrap</h4>
+                                <div class="menu-dots-divider"></div>
+                                <span class="price-tag">KSh 400</span>
+                            </div>
+                            <p class="item-description">Tender pan-seared strips of lean chicken breast rolled inside toasted wraps with garlic drizzle.</p>
+                        </article>
+                    </div>
+                </div>
+
             </div>
 
-            <div>
-                <h3 class="category-title">🍔 Comfort Bites</h3>
-                <div class="menu-list">
-                    <div>
-                        <div class="menu-item-row"><h4>Burger</h4><div class="menu-dots"></div><span class="menu-price">KSh 450</span></div>
-                        <p class="menu-desc">Grilled succulent patty topped with crunchy house greens and custom sauce mixes.</p>
-                    </div>
-                    <div>
-                        <div class="menu-item-row"><h4>Pizza Slice</h4><div class="menu-dots"></div><span class="menu-price">KSh 300</span></div>
-                        <p class="menu-desc">Thick artisan base stacked with premium melted mozzarella and slow-simmered tomato paste.</p>
-                    </div>
-                    <div>
-                        <div class="menu-item-row"><h4>Chicken Wrap</h4><div class="menu-dots"></div><span class="menu-price">KSh 400</span></div>
-                        <p class="menu-desc">Tender pan-seared sliced chicken tightly rolled with mixed vegetables and herb dressing.</p>
-                    </div>
-                </div>
+            <div class="dietary-notice text-center">
+                <p>🍏 <strong>Dietary Note:</strong> Have specific food allergies or macro preferences? Inform our friendly serving counter staff before making payment processing runs so the kitchen line can safely customize your order setup.</p>
             </div>
         </div>
     </section>
 </main>
 
-<footer><p>© 2026 Campus Café</p></footer>
+<footer>
+    <div class="container footer-grid">
+        <div class="footer-brand">
+            <h3>Campus Café</h3>
+            <p>Providing pristine dining spaces and operational workspace solutions right across university environments.</p>
+        </div>
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="blog.html">Blog Portal</a></li>
+                <li><a href="contact.html">Support Hub</a></li>
+            </ul>
+        </div>
+        <div class="footer-contact">
+            <h4>Contact Details</h4>
+            <p style="margin-bottom: 0.5rem;">📞 (555) 123-4567</p>
+            <p>✉️ cafe@campus.edu</p>
+        </div>
+        <div class="footer-socials">
+            <h4>Digital Channels</h4>
+            <ul>
+                <li><a href="#">Instagram Feed</a></li>
+                <li><a href="#">TikTok Updates</a></li>
+                <li><a href="#">Campus Forums</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom text-center">
+        <p>&copy; 2026 Campus Café. All Rights Reserved. Engineered with advanced typographic design systems.</p>
+    </div>
+</footer>
 
 </body>
 </html>
