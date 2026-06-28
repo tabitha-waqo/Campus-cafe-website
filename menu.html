@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu | Campus Café</title>
     <style>
-        /* --- DESIGN SYSTEM & VARIABLES --- */
         :root {
             --bg-primary: #fdfbf7;
             --bg-secondary: #f4efe6;
@@ -19,40 +18,67 @@
             --transition: all 0.3s ease;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: var(--bg-primary); color: var(--text-dark); line-height: 1.6; }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .text-center { text-align: center; }
 
-        body {
-            background-color: var(--bg-primary);
-            color: var(--text-dark);
-            line-height: 1.6;
+        /* --- STICKY NAVIGATION ARCHITECTURE --- */
+        .top-bar {
+            background-color: var(--accent-dark);
+            color: var(--white);
+            font-size: 0.85rem;
+            padding: 0.6rem 0;
+            font-weight: 500;
         }
+        .top-bar-flex { display: flex; justify-content: space-between; align-items: center; }
+        
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            padding: 1.2rem 0;
+        }
+        .header-flex { display: flex; justify-content: space-between; align-items: center; }
+        header h1 { color: var(--accent-dark); font-size: 1.75rem; font-weight: 800; }
+        nav { display: flex; gap: 1.5rem; }
+        nav a { text-decoration: none; color: var(--text-muted); font-weight: 500; transition: var(--transition); }
+        nav a:hover, nav a.active { color: var(--accent-dark); }
     </style>
 </head>
 <body>
 
+<div class="top-bar">
+    <div class="container top-bar-flex">
+        <span>🎉 Show your student ID for 10% off all espresso drinks!</span>
+        <span>📍 Student Union Building, 1st Floor</span>
+    </div>
+</div>
+
 <header>
-    <h1>Campus Café</h1>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="menu.html">Menu</a>
-    </nav>
+    <div class="container header-flex">
+        <h1>Campus Café</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="menu.html" class="active">Menu</a>
+        </nav>
+    </div>
 </header>
 
-<h2>Our Menu</h2>
-
-<ul>
-    <li>Coffee - KSh 150</li>
-    <li>Tea - KSh 100</li>
-    <li>Burger - KSh 450</li>
-    <li>Pizza Slice - KSh 300</li>
-    <li>Chicken Wrap - KSh 400</li>
-</ul>
+<div class="container" style="padding: 4rem 0;">
+    <h2>Our Menu</h2>
+    <ul>
+        <li>Coffee - KSh 150</li>
+        <li>Tea - KSh 100</li>
+        <li>Burger - KSh 450</li>
+        <li>Pizza Slice - KSh 300</li>
+        <li>Chicken Wrap - KSh 400</li>
+    </ul>
+</div>
 
 <footer>
     <p>© 2026 Campus Café</p>
