@@ -6,51 +6,38 @@
     <title>About Us | Campus Café</title>
     <style>
         :root {
-            --bg-primary: #fdfbf7;
-            --bg-secondary: #f4efe6;
-            --accent-dark: #2c4a3e;
-            --accent-light: #4a7c66;
-            --text-dark: #1e2d27;
-            --text-muted: #5c6b64;
-            --white: #ffffff;
-            --gold: #dfa837;
-            --shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-            --transition: all 0.3s ease;
+            --bg-primary: #fdfbf7;--bg-secondary: #f4efe6;--accent-dark: #2c4a3e;--accent-light: #4a7c66;--text-dark: #1e2d27;--text-muted: #5c6b64;--white: #ffffff;--gold: #dfa837;--shadow: 0 8px 24px rgba(0, 0, 0, 0.05);--transition: all 0.3s ease;
         }
-
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
         body { background-color: var(--bg-primary); color: var(--text-dark); line-height: 1.6; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
         .text-center { text-align: center; }
         .section-padding { padding: 5rem 0; }
 
-        .top-bar { background-color: var(--accent-dark); color: var(--white); font-size: 0.85rem; padding: 0.6rem 0; }
-        .top-bar-flex { display: flex; justify-content: space-between; }
+        .top-bar { background-color: var(--accent-dark); color: var(--white); font-size: 0.85rem; padding: 0.6rem 0; display: flex; }
         header { background-color: var(--white); box-shadow: var(--shadow); position: sticky; top: 0; padding: 1.2rem 0; }
         .header-flex { display: flex; justify-content: space-between; align-items: center; }
-        header h1 { color: var(--accent-dark); font-size: 1.75rem; }
+        header h1 { color: var(--accent-dark); }
         nav { display: flex; gap: 1.5rem; }
         nav a { text-decoration: none; color: var(--text-muted); }
         nav a.active { color: var(--accent-dark); font-weight: bold; }
 
-        /* --- HERO & SPLIT SECTIONS --- */
         .inner-hero { background-color: var(--bg-secondary); padding: 5rem 0; }
-        .inner-hero h2 { font-size: 3rem; color: var(--accent-dark); margin-bottom: 1rem; }
-        .inner-hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin: 0 auto; }
-
-        .split-50-50 { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 4rem; align-items: center; }
+        .inner-hero h2 { font-size: 3rem; color: var(--accent-dark); }
+        .split-50-50 { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 4rem; }
         .story-block { background-color: var(--white); padding: 3rem; border-radius: 4px; box-shadow: var(--shadow); border-left: 5px solid var(--accent-light); }
-        .story-block h3 { color: var(--accent-dark); margin-bottom: 1rem; }
+
+        /* --- VALUES & STATS SYSTEM --- */
+        .values-section { background-color: var(--bg-secondary); }
+        .grid-3-col { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .value-card { background-color: var(--white); padding: 2.5rem; border-radius: 4px; box-shadow: var(--shadow); }
+        .value-card .icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        
+        .stats-panel { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem; margin-top: 3rem; padding: 3rem; background-color: var(--accent-dark); color: var(--white); border-radius: 4px; }
+        .stat-item h4 { font-size: 2.5rem; color: var(--gold); font-weight: 800; }
     </style>
 </head>
 <body>
-
-<div class="top-bar">
-    <div class="container top-bar-flex">
-        <span>🎉 Show your student ID for 10% off all espresso drinks!</span>
-        <span>📍 Student Union Building, 1st Floor</span>
-    </div>
-</div>
 
 <header>
     <div class="container header-flex">
@@ -58,7 +45,6 @@
         <nav>
             <a href="index.html">Home</a>
             <a href="about.html" class="active">About</a>
-            <a href="menu.html">Menu</a>
         </nav>
     </div>
 </header>
@@ -67,29 +53,53 @@
     <section class="inner-hero text-center">
         <div class="container">
             <h2>About Us</h2>
-            <p>Cultivating a distinct culinary community and optimized workspace directly inside the heart of the university ecosystem.</p>
+            <p>Cultivating an optimized workspace directly inside the heart of the university ecosystem.</p>
         </div>
     </section>
 
     <section class="story-section section-padding">
         <div class="container split-50-50">
             <div>
-                <h2 style="font-size: 2.2rem; color: var(--accent-dark); margin-bottom: 1rem;">Our Roots</h2>
-                <p style="color: var(--text-muted);">Campus Café was established in 2024 to fundamentally solve a prominent issue for students: the critical need for premium, accessible food paired alongside structured productivity workspaces.</p>
+                <h2 style="font-size: 2.2rem; color: var(--accent-dark);">Our Roots</h2>
+                <p style="color: var(--text-muted);">Campus Café was established in 2024 to solve the critical student need for premium, accessible food alongside functional workspaces.</p>
             </div>
-            <div>
-                <div class="story-block">
-                    <h3>Our Mission Statement</h3>
-                    <p>"To create an intentionally designed, welcoming space where students can seamlessly balance intense study targets, rewarding social connections, and fresh high-quality meals."</p>
+            <div class="story-block">
+                <h3>Our Mission</h3>
+                <p>"To balance intense study targets, rewarding social connections, and fresh high-quality meals."</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="values-section section-padding text-center">
+        <div class="container">
+            <div class="grid-3-col">
+                <div class="value-card">
+                    <div class="icon">🌱</div>
+                    <h3>Fresh Quality</h3>
+                    <p>We source premium local ingredients and roast custom organic espresso beans daily.</p>
                 </div>
+                <div class="value-card">
+                    <div class="icon">🤝</div>
+                    <h3>Inclusivity</h3>
+                    <p>A welcoming, vibrant community atmosphere where group brainstorming thrives.</p>
+                </div>
+                <div class="value-card">
+                    <div class="icon">🎓</div>
+                    <h3>Student First</h3>
+                    <p>Pricing configurations structured entirely around standard exam schedules.</p>
+                </div>
+            </div>
+
+            <div class="stats-panel">
+                <div class="stat-item"><h4>2024</h4><p>Founded</p></div>
+                <div class="stat-item"><h4>50k+</h4><p>Cups Served</p></div>
+                <div class="stat-item"><h4>100%</h4><p>Student Focused</p></div>
             </div>
         </div>
     </section>
 </main>
 
-<footer>
-    <p>© 2026 Campus Café</p>
-</footer>
+<footer><p>© 2026 Campus Café</p></footer>
 
 </body>
 </html>
