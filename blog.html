@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Campus Café Blog - Latest news, offers and student updates.">
+    <title>Blog | Campus Café</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root{
+            --bg-primary:#fdfbf7;
+            --bg-secondary:#f4efe6;
+            --accent-dark:#2c4a3e;
+            --accent-light:#4a7c66;
+            --text-dark:#1e2d27;
+            --text-muted:#5c6b64;
+            --white:#ffffff;
+            --gold:#dfa837;
+            --shadow:0 8px 24px rgba(0,0,0,.05);
+            --transition:all .3s ease;
+        }
+
+        body{
+            background:var(--bg-primary);
+            color:var(--text-dark);
+            font-family:'Segoe UI',sans-serif;
+        }
+
+        /* Top Bar */
+
+        .top-bar{
+            background:var(--accent-dark);
+            color:white;
+            padding:.6rem 0;
+            font-size:.9rem;
+        }
+
+        /* Navbar */
+
+        header{
+            background:white;
+            box-shadow:var(--shadow);
+            position:sticky;
+            top:0;
+            z-index:999;
+        }
+
+        .navbar-brand{
+            color:var(--accent-dark)!important;
+            font-size:1.8rem;
+            font-weight:bold;
+        }
+
+        .nav-link{
+            color:var(--text-muted)!important;
+            font-weight:500;
+        }
+
+        .nav-link:hover,
+        .nav-link.active{
+            color:var(--accent-dark)!important;
+        }
+
+        /* Hero */
+
+        .hero{
+            background:var(--bg-secondary);
+            padding:80px 20px;
+            text-align:center;
+        }
+
+        .hero h1{
+            color:var(--accent-dark);
+            font-weight:bold;
+            font-size:3rem;
+        }
+
+        /* Blog Cards */
+
+        .blog-card{
+            background:white;
+            border-radius:8px;
+            padding:25px;
+            box-shadow:var(--shadow);
+            height:100%;
+            transition:.3s;
+        }
+
+        .blog-card:hover{
+            transform:translateY(-5px);
+        }
+
+        .badge-custom{
+            background:var(--accent-light);
+            color:white;
+            padding:6px 12px;
+            border-radius:20px;
+            font-size:.8rem;
+        }
+
+        .blog-card h3{
+            margin-top:15px;
+            color:var(--accent-dark);
+        }
+
+        .read-more{
+            color:var(--accent-dark);
+            font-weight:bold;
+            text-decoration:none;
+        }
+
+        .read-more:hover{
+            color:var(--gold);
+        }
+
+        /* Footer */
+
+        footer{
+            background:var(--text-dark);
+            color:white;
+            margin-top:60px;
+            padding:50px 0 20px;
+        }
+
+        footer a{
+            color:#ddd;
+            text-decoration:none;
+        }
+
+        footer a:hover{
+            color:var(--gold);
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="top-bar">
+    <div class="container d-flex justify-content-between">
+        <span>☕ Welcome to Campus Café Blog</span>
+        <span>📍 Student Union Building</span>
+    </div>
+</div>
+
+<header>
+
+<div class="container">
+
+<nav class="navbar navbar-expand-lg navbar-light">
+
+<a class="navbar-brand" href="index.html">Campus Café</a>
+
+<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+
+<span class="navbar-toggler-icon"></span>
+
+</button>
+
+<div class="collapse navbar-collapse justify-content-end" id="menu">
+
+<div class="navbar-nav">
+
+<a class="nav-link" href="index.html">Home</a>
+
+<a class="nav-link" href="about.html">About</a>
+
+<a class="nav-link" href="menu.html">Menu</a>
+
+<a class="nav-link" href="gallery.html">Gallery</a>
+
+<a class="nav-link active" href="blog.html">Blog</a>
+
+<a class="nav-link" href="faq.html">FAQ</a>
+
+<a class="nav-link" href="contact.html">Contact</a>
+
+</div>
+
+</div>
+
+</nav>
+
+</div>
+
+</header>
+
+<section class="hero">
+
+<div class="container">
+
+<h1>Campus Café Blog</h1>
+
+<p class="lead">Stay updated with the latest café news, events and student offers.</p>
+
+</div>
+
+</section>
+
+<section class="container my-5">
+
+<div class="row g-4">
+
+<div class="col-md-4">
+
+<div class="blog-card">
+
+<span class="badge-custom">Offers</span>
+
+<h3>10% Student Discount</h3>
+
+<p>Bring your valid student ID every Friday and enjoy a 10% discount on selected meals and drinks.</p>
+
+<a href="#" class="read-more">Read More →</a>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="blog-card">
+
+<span class="badge-custom">Study Tips</span>
+
+<h3>Study Late With Us</h3>
+
+<p>During exam season, Campus Café stays open until midnight so students can study comfortably with free Wi-Fi and charging stations.</p>
+
+<a href="#" class="read-more">Read More →</a>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="blog-card">
+
+<span class="badge-custom">Coffee</span>
+
+<h3>Try Our New Caramel Latte</h3>
+
+<p>Our newest caramel latte is made with freshly roasted coffee beans and creamy milk. Perfect for your morning lectures.</p>
+
+<a href="#" class="read-more">Read More →</a>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="blog-card">
+
+<span class="badge-custom">Events</span>
+
+<h3>Open Mic Friday</h3>
+
+<p>Join fellow students every Friday evening for live music, poetry and comedy while enjoying your favourite coffee.</p>
+
+<a href="#" class="read-more">Read More →</a>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="blog-card">
+
+<span class="badge-custom">Food</span>
+
+<h3>Healthy Breakfast Menu</h3>
+
+<p>Start your day with fresh sandwiches, fruit bowls and smoothies prepared daily by our café team.</p>
+
+<a href="#" class="read-more">Read More →</a>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="blog-card">
+
+<span class="badge-custom">Community</span>
+
+<h3>Meet New Friends</h3>
+
+<p>Campus Café is more than a coffee shop. It's a place where students collaborate, relax and build friendships.</p>
+
+<a href="#" class="read-more">Read More →</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<div class="container">
+
+<div class="row">
+
+<div class="col-md-4">
+
+<h4>Campus Café</h4>
+
+<p>Your favourite place for coffee, food and studying.</p>
+
+</div>
+
+<div class="col-md-4">
+
+<h4>Quick Links</h4>
+
+<p><a href="index.html">Home</a></p>
+
+<p><a href="menu.html">Menu</a></p>
+
+<p><a href="gallery.html">Gallery</a></p>
+
+<p><a href="contact.html">Contact</a></p>
+
+</div>
+
+<div class="col-md-4">
+
+<h4>Contact</h4>
+
+<p>📞 (555) 123-4567</p>
+
+<p>✉️ cafe@campus.edu</p>
+
+<p>📍 Student Union Building</p>
+
+</div>
+
+</div>
+
+<hr>
+
+<p class="text-center mb-0">&copy; 2026 Campus Café. All Rights Reserved.</p>
+
+</div>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
