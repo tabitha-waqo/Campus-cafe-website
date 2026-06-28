@@ -3,11 +3,417 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Campus Café - The perfect spot for students to enjoy delicious meals, fresh coffee, and a quiet study environment.">
+    <meta name="description" content="Campus Café - Premium student culinary and workspace ecosystem.">
     <title>Campus Café | Home</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- DESIGN SYSTEM & VARIABLES --- */
+        :root {
+            --bg-primary: #fdfbf7;
+            --bg-secondary: #f4efe6;
+            --accent-dark: #2c4a3e;
+            --accent-light: #4a7c66;
+            --text-dark: #1e2d27;
+            --text-muted: #5c6b64;
+            --white: #ffffff;
+            --gold: #dfa837;
+            --shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .text-center { text-align: center; }
+        .section-padding { padding: 5rem 0; }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+        .btn-primary {
+            background-color: var(--accent-dark);
+            color: var(--white);
+        }
+        .btn-primary:hover {
+            background-color: var(--accent-light);
+        }
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--accent-dark);
+            border: 2px solid var(--accent-dark);
+        }
+        .btn-secondary:hover {
+            background-color: var(--accent-dark);
+            color: var(--white);
+        }
+
+        /* --- TOP BANNER --- */
+        .top-bar {
+            background-color: var(--accent-dark);
+            color: var(--white);
+            font-size: 0.85rem;
+            padding: 0.6rem 0;
+            font-weight: 500;
+        }
+        .top-bar-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        /* --- NAVIGATION HEADER --- */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            padding: 1.2rem 0;
+        }
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            color: var(--accent-dark);
+            font-size: 1.75rem;
+            font-weight: 800;
+        }
+        nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        nav a:hover, nav a.active {
+            color: var(--accent-dark);
+        }
+
+        /* --- HERO SECTION (Split Columns) --- */
+        .hero {
+            background-color: var(--bg-secondary);
+            padding: 6rem 0;
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .hero-content h2 {
+            font-size: 3rem;
+            line-height: 1.1;
+            color: var(--accent-dark);
+            margin-bottom: 1.5rem;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+        }
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+        }
+        .hero-spotlight {
+            background-color: var(--white);
+            padding: 3rem;
+            border-left: 5px solid var(--accent-dark);
+            box-shadow: var(--shadow);
+            border-radius: 4px;
+        }
+        .badge {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--accent-dark);
+            padding: 0.25rem 0.7rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 2px;
+            margin-bottom: 1rem;
+        }
+        .spotlight-text {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--accent-dark);
+            font-weight: 500;
+        }
+
+        /* --- SECTION STRUCTURES --- */
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--accent-dark);
+            margin-bottom: 1rem;
+        }
+        .section-subtitle {
+            color: var(--text-muted);
+            margin-bottom: 3.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Grid Layout Frameworks */
+        .grid-3-col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .grid-4-col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+        .split-50-50 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 4rem;
+        }
+
+        /* Features Cards */
+        .feature-card {
+            background-color: var(--white);
+            padding: 2.5rem;
+            border-radius: 4px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .feature-card h3 {
+            margin-bottom: 0.75rem;
+            color: var(--accent-dark);
+        }
+
+        /* Specials Cards */
+        .specials-section { background-color: var(--bg-secondary); }
+        .menu-item-card {
+            background-color: var(--white);
+            padding: 1.5rem;
+            border-radius: 4px;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+        }
+        .menu-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.75rem;
+            border-bottom: 1px dashed var(--bg-secondary);
+            padding-bottom: 0.5rem;
+        }
+        .menu-card-header h3 { font-size: 1.1rem; color: var(--accent-dark); }
+        .price { color: var(--accent-light); font-weight: 700; }
+        .menu-item-card p { font-size: 0.9rem; color: var(--text-muted); }
+
+        /* Amenities Badges */
+        .dynamic-amenities { margin-top: 2rem; }
+        .amenity-item {
+            background-color: var(--white);
+            padding: 1.5rem;
+            font-weight: 600;
+            border-radius: 4px;
+            box-shadow: var(--shadow);
+            color: var(--accent-dark);
+            border: 1px solid rgba(74, 124, 102, 0.1);
+        }
+
+        /* Hours & Directions Split Column Section */
+        .hours-location-section { background-color: var(--bg-secondary); }
+        .hours-block, .location-block {
+            background-color: var(--white);
+            padding: 3rem;
+            border-radius: 4px;
+            box-shadow: var(--shadow);
+        }
+        .hours-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+        }
+        .hours-table th, .hours-table td {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--bg-secondary);
+            text-align: left;
+        }
+        .hours-table th { color: var(--accent-light); font-weight: 600; }
+        .location-card { margin-top: 1.5rem; }
+        .location-card p { margin-bottom: 1rem; }
+
+        /* Newsletter Panel */
+        .custom-text-panel {
+            background-color: var(--accent-dark);
+            color: var(--white);
+            padding: 4rem 2rem;
+            border-radius: 6px;
+        }
+        .custom-text-panel h2 { color: var(--white); margin-bottom: 0.5rem; }
+        .custom-text-panel p { color: rgba(255,255,255,0.8); margin-bottom: 2rem; }
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            gap: 0.5rem;
+        }
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: 4px;
+        }
+        .newsletter-form .btn { background-color: var(--gold); color: var(--accent-dark); }
+
+        /* Testimonial Cards */
+        .testimonial-card {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 4px;
+            box-shadow: var(--shadow);
+            text-align: left;
+        }
+        .stars { color: var(--gold); margin-bottom: 1rem; font-size: 0.9rem; }
+        .review-text { font-style: italic; margin-bottom: 1.5rem; color: var(--text-dark); }
+        .testimonial-meta { display: flex; flex-direction: column; }
+        .user-subtext { font-size: 0.8rem; color: var(--text-muted); }
+
+        /* --- DETAILED MULTI-COLUMN FOOTER --- */
+        footer {
+            background-color: var(--text-dark);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 4rem 0 2rem 0;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 3rem;
+        }
+        .footer-brand h3, .footer-links h4, .footer-contact h4, .footer-socials h4 {
+            color: var(--white);
+            margin-bottom: 1.2rem;
+        }
+        .footer-links ul, .footer-socials ul { list-style: none; }
+        .footer-links ul li, .footer-socials ul li { margin-bottom: 0.6rem; }
+        .footer-links ul li a, .footer-socials ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .footer-links ul li a:hover, .footer-socials ul li a:hover { color: var(--gold); }
+        .footer-bottom { font-size: 0.85rem; }
+
+        /* --- CSS POPUP MODAL (Target-triggered safely) --- */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(30, 45, 39, 0.8);
+            backdrop-filter: blur(4px);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .popup-overlay:target {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .popup-window {
+            background-color: var(--bg-primary);
+            max-width: 450px;
+            width: 90%;
+            padding: 3rem;
+            border-radius: 4px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            text-align: center;
+            position: relative;
+            border-top: 6px solid var(--gold);
+        }
+        .popup-window h3 {
+            color: var(--accent-dark);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        .popup-window p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+        .close-popup {
+            position: absolute;
+            top: 1rem;
+            right: 1.2rem;
+            font-size: 1.5rem;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: bold;
+        }
+        .close-popup:hover { color: var(--accent-dark); }
+
+        /* --- RESPONSIVE FIXES --- */
+        @media (max-width: 992px) {
+            .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .footer-grid { grid-template-columns: 1fr; }
+            .hero-cta { flex-direction: column; }
+        }
+    </style>
 </head>
 <body>
+
+<div class="popup-overlay" id="promo">
+    <div class="popup-window">
+        <a href="#" class="close-popup">&times;</a>
+        <span class="badge">Happy Hour Special</span>
+        <h3>Free Espresso Shot!</h3>
+        <p>Studying for midterms? Show this window to the barista anytime between 4 PM and 6 PM today for a free premium espresso upgrade.</p>
+        <a href="#" class="btn btn-primary">Claim Offer</a>
+    </div>
+</div>
 
 <div class="top-bar">
     <div class="container top-bar-flex">
@@ -35,214 +441,32 @@
     <section class="hero">
         <div class="container hero-grid">
             <div class="hero-content">
-                <h2>Good Food. Great Coffee. Better Moments.</h2>
-                <p>Enjoy delicious meals, fresh coffee and a relaxing study environment designed for campus life.</p>
+                <h2>Good Food.<br>Great Coffee.<br>Better Moments.</h2>
+                <p>Enjoy delicious meals, fresh coffee and a relaxing study environment specifically engineered for modern university life.</p>
                 <div class="hero-cta">
                     <a href="menu.html" class="btn btn-primary">View Menu</a>
-                    <a href="contact.html" class="btn btn-secondary">Contact Us</a>
+                    <a href="#promo" class="btn btn-secondary">Check Daily Voucher</a>
                 </div>
             </div>
             <div class="hero-spotlight">
                 <div class="spotlight-card">
-                    <span class="badge">Notice</span>
-                    <p class="spotlight-text">"Your ultimate campus fueling station for late-night study sessions and morning lecture pick-me-ups."</p>
+                    <span class="badge">Live Notice</span>
+                    <p class="spotlight-text">"Your ultimate campus fueling station for late-night study blocks and quick lecture pick-me-ups."</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="welcome-section">
-        <div class="container text-center">
-            <h2>Welcome</h2>
-            <p>Campus Café is where students come together to enjoy great food, study comfortably and create memorable moments.</p>
-        </div>
-    </section>
-
-    <section class="features-section text-center">
+    <section class="features-section section-padding text-center">
         <div class="container">
             <h2 class="section-title">Why Choose Us?</h2>
+            <p class="section-subtitle">We build environments that optimize both your nutritional intake and study flow state.</p>
             <div class="grid-3-col">
                 <article class="feature-card">
                     <div class="feature-icon">🍔</div>
                     <h3>Affordable Meals</h3>
-                    <p>Quality food tailored perfectly to fit a student budget.</p>
+                    <p>High-quality, freshly prepared nutritional menus tailored perfectly to match standard student budgets.</p>
                 </article>
                 <article class="feature-card">
                     <div class="feature-icon">☕</div>
                     <h3>Fresh Coffee</h3>
-                    <p>Artisanal espresso roasted and prepared fresh throughout the day.</p>
-                </article>
-                <article class="feature-card">
-                    <div class="feature-icon">💻</div>
-                    <h3>Comfortable Seating</h3>
-                    <p>Spacious seating areas perfect for individual and group study.</p>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section class="specials-section">
-        <div class="container">
-            <h2 class="text-center">Today's Specials</h2>
-            <div class="grid-4-col">
-                <article class="menu-item-card">
-                    <div class="menu-card-header">
-                        <h3>Chicken Burger</h3>
-                        <span class="price">$5.50</span>
-                    </div>
-                    <p>Crispy breaded chicken breast, lettuce, tomato, and house sauce.</p>
-                </article>
-                <article class="menu-item-card">
-                    <div class="menu-card-header">
-                        <h3>Beef Wrap</h3>
-                        <span class="price">$6.00</span>
-                    </div>
-                    <p>Seasoned shredded beef wrap with fresh crunchy vegetables.</p>
-                </article>
-                <article class="menu-item-card">
-                    <div class="menu-card-header">
-                        <h3>Latte</h3>
-                        <span class="price">$3.50</span>
-                    </div>
-                    <p>Premium rich espresso paired with smoothly steamed velvety milk.</p>
-                </article>
-                <article class="menu-item-card">
-                    <div class="menu-card-header">
-                        <h3>Blueberry Muffin</h3>
-                        <span class="price">$2.50</span>
-                    </div>
-                    <p>Oven-fresh bakery muffin bursting with sweet local blueberries.</p>
-                </article>
-            </div>
-            <div class="text-center mt-2">
-                <a href="menu.html" class="btn btn-link">View Full Menu →</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="study-section text-center">
-        <div class="container">
-            <h2>Study With Us</h2>
-            <p class="section-subtitle">We provide a peaceful workspace engineered around campus productivity.</p>
-            <div class="grid-4-col dynamic-amenities">
-                <div class="amenity-item">🚀 High-Speed Wi-Fi</div>
-                <div class="amenity-item">🔌 Outlets at Every Table</div>
-                <div class="amenity-item">🛋️ Group Study Zones</div>
-                <div class="amenity-item">🤫 Quiet Workstations</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="newsletter-section text-center">
-        <div class="container custom-text-panel">
-            <h2>Get Weekly Menu Updates</h2>
-            <p>Never miss out on our menu rotations, happy hour countdowns, or exam week deals.</p>
-            <form class="newsletter-form">
-                <input type="email" placeholder="Enter your student email..." required>
-                <button type="submit" class="btn btn-primary">Subscribe</button>
-            </form>
-        </div>
-    </section>
-
-    <section class="hours-location-section">
-        <div class="container split-50-50">
-            <div class="hours-block">
-                <h2>Opening Hours</h2>
-                <table class="hours-table">
-                    <tr>
-                        <th>Day</th>
-                        <th>Hours</th>
-                    </tr>
-                    <tr>
-                        <td>Monday - Friday</td>
-                        <td>7 AM - 8 PM</td>
-                    </tr>
-                    <tr>
-                        <td>Saturday</td>
-                        <td>8 AM - 6 PM</td>
-                    </tr>
-                    <tr>
-                        <td>Sunday</td>
-                        <td>Closed</td>
-                    </tr>
-                </table>
-            </div>
-            <div class="location-block">
-                <h2>Find Our Venue</h2>
-                <div class="location-card">
-                    <p>📍 <strong>Student Union Building</strong></p>
-                    <p>Central Quad, Ground Floor (Right next to the University Library entrance)</p>
-                    <a href="contact.html" class="btn btn-secondary btn-sm">Get Full Directions</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="testimonials-section text-center">
-        <div class="container">
-            <h2>What Our Customers Say</h2>
-            <div class="grid-3-col">
-                <article class="testimonial-card">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <p class="review-text">"The best coffee on campus. I visit almost every single day between my morning classes."</p>
-                    <div class="testimonial-meta">
-                        <strong>Brian M.</strong>
-                        <span class="user-subtext">Senior Student</span>
-                    </div>
-                </article>
-                <article class="testimonial-card">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <p class="review-text">"I enjoy studying here because it's quiet, comfortable, and the Wi-Fi speed is unbeatable."</p>
-                    <div class="testimonial-meta">
-                        <strong>Faith K.</strong>
-                        <span class="user-subtext">Postgrad Student</span>
-                    </div>
-                </article>
-                <article class="testimonial-card">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <p class="review-text">"The meals are cheap and delicious, and the staff are incredibly nice to everyone."</p>
-                    <div class="testimonial-meta">
-                        <strong>Kevin O.</strong>
-                        <span class="user-subtext">Sophomore Student</span>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-</main>
-
-<footer>
-    <div class="container footer-grid">
-        <div class="footer-brand">
-            <h3>Campus Café</h3>
-            <p>Good Food. Great Coffee. Better Moments.</p>
-        </div>
-        <div class="footer-links">
-            <h4>Quick Links</h4>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="menu.html">Menu</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-        <div class="footer-contact">
-            <h4>Contact Info</h4>
-            <p>📞 (555) 123-4567</p>
-            <p>✉️ cafe@campus.edu</p>
-        </div>
-        <div class="footer-socials">
-            <h4>Follow Us</h4>
-            <ul>
-                <li><a href="#">Instagram</a></li>
-                <li><a href="#">TikTok</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="footer-bottom text-center">
-        <p>&copy; 2026 Campus Café. All Rights Reserved.</p>
-    </div>
-</footer>
-
-</body>
-</html>
